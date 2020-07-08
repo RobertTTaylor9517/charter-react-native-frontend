@@ -19,17 +19,22 @@ import User from './containers/User';
 
 const Stack = createStackNavigator();
 
-
 const App = () => {
+  const linking = {
+    prefixes: ['', ''],
+  };
   return (
-    <NavigationContainer style={Styles.main}>
+    <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen
-          name="Start"
-          component={Start}
-          options={{title: 'Bizzi'}}
+          name="User"
+          component={User}
+          options={{
+            headerTitleStyle: {
+              textAlign: 'center',
+            },
+          }}
         />
-        <Stack.Screen name="User" component={User} />
       </Stack.Navigator>
     </NavigationContainer>
   );
