@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">charterFrontend</string>
+    <string name="charta_text">charta</string>
 </resources>

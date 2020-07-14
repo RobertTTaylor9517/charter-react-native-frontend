@@ -34,6 +34,26 @@ const Styles = StyleSheet.create({
     borderBottomWidth: 2,
     borderColor: '#eee',
   },
+  NewUser: {
+    backgroundColor: '#9765F4',
+    flex: 1,
+    justifyContent: 'center',
+  },
+  NewUserField: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#fff',
+    margin: 10,
+    borderRadius: 50,
+    borderWidth: 2,
+  },
+  NUTextInput: {
+    padding: 2,
+    margin: 10,
+    width: 300,
+    borderRadius: 50,
+    textAlign: 'center',
+  },
 });
 
 export default Styles;

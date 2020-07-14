@@ -13,7 +13,7 @@ const User = ({navigation}) => {
   const [user, setUser] = useState([
     {
       id: uuidv4(),
-      name: 'Robert Taylor',
+      name: 'John Smith',
       about:
         'Software Engineer \nMusic Producer \nApp Creator \nFreelance App Creator for hire',
       headerImg:
@@ -28,12 +28,14 @@ const User = ({navigation}) => {
   const [links, setLinks] = useState([
     {
       id: uuidv4(),
+      name: 'Link 1',
       link: 'https://www.linkedin.com/in/robert-taylor-9456a0175/',
     },
     {
       id: uuidv4(),
       link:
         'https://www.youtube.com/channel/UCh_NtxYS2ty4yWSP3c62cyQ?view_as=subscriber',
+      name: 'Link 2',
     },
   ]);
   return (
