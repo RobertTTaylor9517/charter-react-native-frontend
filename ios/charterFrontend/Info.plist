@@ -54,7 +54,7 @@
 	<string></string>
 	<key>UIAppFonts</key>
 	<array>
-		<string>bubble_gum.ttf</string>
+		<string>BubbleGum.ttf</string>
 		<string>AntDesign.ttf</string>
 		<string>Entypo.ttf</string>
 		<string>EvilIcons.ttf</string>
