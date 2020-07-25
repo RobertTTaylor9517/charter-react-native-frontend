@@ -2,7 +2,7 @@ import React from 'react';
 import {View, Text, TextInput} from 'react-native';
 import Styles from '../Styles';
 
-class NewUser extends React.Component {
+class NewPage extends React.Component {
   constructor() {
     super();
   }
@@ -38,4 +38,4 @@ class NewUser extends React.Component {
   }
 }
 
-export default NewUser;
+export default NewPage;

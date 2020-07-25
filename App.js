@@ -17,7 +17,8 @@ import Styles from './Styles';
 
 import Start from './containers/Start';
 import User from './containers/User';
-import NewUser from './containers/NewUser';
+import NewPage from './containers/NewPage';
+import SignIn from './containers/SignIn';
 
 const Stack = createStackNavigator();
 
@@ -40,7 +41,7 @@ class App extends React.Component {
   render(): React$Node {
     return (
       <NavigationContainer linking={linking} fallback={<Text>Loading...</Text>}>
-        <Stack.Navigator initialRouteName="User">
+        <Stack.Navigator initialRouteName="SignIn">
           <Stack.Screen
             name="User"
             component={User}
@@ -52,7 +53,14 @@ class App extends React.Component {
           />
           <Stack.Screen
             name="NewUser"
-            component={NewUser}
+            component={NewPage}
+            options={{
+              headerShown: false,
+            }}
+          />
+          <Stack.Screen
+            name="SignIn"
+            component={SignIn}
             options={{
               headerShown: false,
             }}
