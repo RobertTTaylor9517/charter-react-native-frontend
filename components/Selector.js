@@ -8,7 +8,7 @@ const Selector = (props) => {
 
   if (props.form === true) {
     return (
-      <Text>
+      <Text style={{paddingBottom: 30}}>
         Don't have an account?{' '}
         <Text
           style={{color: 'blue', textDecorationLine: 'underline'}}
@@ -19,7 +19,7 @@ const Selector = (props) => {
     );
   } else {
     return (
-      <Text>
+      <Text style={{paddingBottom: 30}}>
         Already have an account?{' '}
         <Text
           style={{color: 'blue', textDecorationLine: 'underline'}}
