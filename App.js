@@ -19,6 +19,8 @@ import Start from './containers/Start';
 import User from './containers/User';
 import NewPage from './containers/NewPage';
 import SignIn from './containers/SignIn';
+import MMKVStorage from 'react-native-mmkv-storage/index';
+import {initDb} from './storage/IMDatabase';
 
 const Stack = createStackNavigator();
 
@@ -33,6 +35,7 @@ const linking = {
 
 class App extends React.Component {
   componentDidMount(): * {
+    initDb();
     setTimeout(() => {
       SplashScreen.hide();
     }, 3000);

@@ -1,7 +1,6 @@
-import Datastore from 'react-native-local-mongodb';
+import MMKVStorage from 'react-native-mmkv-storage/index';
 
-export const db = new Datastore();
-
-export const saveUserDb = () => {
-
-}
+export let MMKV;
+export const initDb = () => {
+  MMKV = new MMKVStorage.Loader().initialize();
+};
