@@ -3,7 +3,7 @@ import {View, TextInput, StyleSheet, Text, Button} from 'react-native';
 
 import Selector from '../components/Selector';
 import {login, signUp} from '../fetch/Fetcher';
-import {MMKV} from '../storage/IMDatabase';
+// import {MMKV} from '../storage/IMDatabase';
 
 const SignIn = () => {
   // Create state to hold user input
@@ -84,10 +84,10 @@ const SignIn = () => {
         }),
       })
         .then((res) => res.json())
-        .then((result) => {
-          _createEntry('user', result).then((r) => {
-            console.log(r);
-          });
+        .then(async (result) => {
+          await global.MMKV.setMapAsync('user', result);
+          let user = await global.MMKV.getMapAsync('user');
+          console.log(user);
         })
         .catch((err) => console.log(err));
     } else {
@@ -104,8 +104,8 @@ const SignIn = () => {
         .then((res) => res.json())
         .then(async (result) => {
           console.log(result);
-          await MMKV.setMapAsync('user', result);
-          let user = await MMKV.getMapAsync('user');
+          await global.MMKV.setMapAsync('user', result);
+          let user = await global.MMKV.getMapAsync('user');
           console.log(user);
         })
         .catch((err) => console.log(err));

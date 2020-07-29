@@ -35,7 +35,7 @@ const linking = {
 
 class App extends React.Component {
   componentDidMount(): * {
-    initDb();
+    // initDb();
     setTimeout(() => {
       SplashScreen.hide();
     }, 3000);
