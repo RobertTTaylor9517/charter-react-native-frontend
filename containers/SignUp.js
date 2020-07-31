@@ -1,18 +1,12 @@
-import React, {useState} from 'react';
-import {View, TextInput, StyleSheet, Text, Button} from 'react-native';
+import React from 'react';
+import {View, StyleSheet, Text} from 'react-native';
+import {signUp} from '../fetch/Fetcher';
 
-import Selector from '../components/Selector';
-import {login} from '../fetch/Fetcher';
+import SignUpForm from '../components/SignUpForm';
 
-import SignForm from '../components/SignForm';
-
-const SignIn = () => {
-  // Create state to hold user input
-  const [form, setForm] = useState(true);
-
-  //Submits form data to backend
+const SignUp = () => {
   const onSubmit = (data) => {
-    fetch(login, {
+    fetch(signUp, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -24,6 +18,7 @@ const SignIn = () => {
     })
       .then((res) => res.json())
       .then(async (result) => {
+        console.log(result);
         await global.MMKV.setMapAsync('user', result);
         let user = await global.MMKV.getMapAsync('user');
         console.log(user);
@@ -32,23 +27,26 @@ const SignIn = () => {
   };
 
   return (
-    <View style={localStyles.back}>
-      <View>
-        <SignForm onSubmit={onSubmit} />
-
-        <Selector form={form} setForm={setForm} />
+    <View style={Styles.back}>
+      <View style={Styles.innerView}>
+        <SignUpForm onSubmit={onSubmit} />
       </View>
     </View>
   );
 };
 
-const localStyles = StyleSheet.create({
+const Styles = StyleSheet.create({
   back: {
     backgroundColor: '#6C18EB',
     flex: 1,
     justifyContent: 'center',
-    padding: 8,
+    padding: 20,
+    paddingTop: 50,
+  },
+  innerView: {
+    backgroundColor: 'white',
+    flex: 1,
   },
 });
 
-export default SignIn;
+export default SignUp;

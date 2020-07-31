@@ -19,8 +19,7 @@ import Start from './containers/Start';
 import User from './containers/User';
 import NewPage from './containers/NewPage';
 import SignIn from './containers/SignIn';
-import MMKVStorage from 'react-native-mmkv-storage/index';
-import {initDb} from './storage/IMDatabase';
+import SignUp from './containers/SignUp';
 
 const Stack = createStackNavigator();
 
@@ -55,7 +54,7 @@ class App extends React.Component {
             }}
           />
           <Stack.Screen
-            name="NewUser"
+            name="NewPage"
             component={NewPage}
             options={{
               headerShown: false,
@@ -64,6 +63,13 @@ class App extends React.Component {
           <Stack.Screen
             name="SignIn"
             component={SignIn}
+            options={{
+              headerShown: false,
+            }}
+          />
+          <Stack.Screen
+            name="SignUp"
+            component={SignUp}
             options={{
               headerShown: false,
             }}
