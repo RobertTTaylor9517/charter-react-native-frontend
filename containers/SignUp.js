@@ -1,10 +1,12 @@
 import React from 'react';
 import {View, StyleSheet, Text} from 'react-native';
 import {signUp} from '../fetch/Fetcher';
+import {useNavigation} from '@react-navigation/native';
 
 import SignUpForm from '../components/SignUpForm';
 
 const SignUp = () => {
+  const navigation = useNavigation();
   const onSubmit = (data) => {
     fetch(signUp, {
       method: 'POST',
@@ -22,6 +24,7 @@ const SignUp = () => {
         await global.MMKV.setMapAsync('user', result);
         let user = await global.MMKV.getMapAsync('user');
         console.log(user);
+        navigation.navigate('NewPage');
       })
       .catch((err) => console.log(err));
   };
