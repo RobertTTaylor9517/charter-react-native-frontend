@@ -20,6 +20,7 @@ import User from './containers/User';
 import NewPage from './containers/NewPage';
 import SignIn from './containers/SignIn';
 import SignUp from './containers/SignUp';
+import MyUserNavigator from './containers/MyUserNavigator';
 
 const Stack = createStackNavigator();
 
@@ -70,6 +71,13 @@ class App extends React.Component {
           <Stack.Screen
             name="SignUp"
             component={SignUp}
+            options={{
+              headerShown: false,
+            }}
+          />
+          <Stack.Screen
+            name="UserNav"
+            component={MyUserNavigator}
             options={{
               headerShown: false,
             }}

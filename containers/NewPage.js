@@ -2,36 +2,37 @@ import React, {useEffect} from 'react';
 import {View, Text, TextInput, Button, StyleSheet} from 'react-native';
 import {useForm, Controller} from 'react-hook-form';
 
-import {createPage} from '../fetch/Fetcher';
+import {baseURL, createPage} from '../fetch/Fetcher';
 import Icon from 'react-native-vector-icons/AntDesign';
 
-const NewPage = () => {
+const NewPage = ({navigation}) => {
   const {control, handleSubmit, errors} = useForm();
 
   const onSubmit = (data) => {
-    global.MMKV.getMapAsync('user')
-      .then((res) => res)
-      .then((userInfo) => {
-        console.log(userInfo.token);
-
-        fetch(createPage, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: userInfo.token,
-          },
-          body: JSON.stringify({
-            user_id: userInfo.user_id,
-            title: data.name,
-            about: data.about,
-          }),
+    global.MMKV.getMapAsync('user').then((userInfo) => {
+      const user = userInfo;
+      fetch(createPage, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+          Authorization: user.token,
+        },
+        body: JSON.stringify({
+          user_id: user.user_id,
+          title: data.name,
+          about: data.about,
+          headerImg: '',
+          userImg: '',
+        }),
+      })
+        .then((res) => res.json())
+        .then(async (result) => {
+          await global.MMKV.setStringAsync('page_id', result);
+          navigation.navigate('UserNav');
         })
-          .then((res) => res.json())
-          .then(async (result) => {
-            console.log(result);
-          })
-          .catch((err) => console.log(err));
-      });
+        .catch((err) => console.log(err));
+    });
   };
   return (
     <View>
