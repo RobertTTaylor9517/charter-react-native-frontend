@@ -6,7 +6,7 @@ import UserAbout from '../components/UserAbout';
 import UserLinks from '../components/UserLinks';
 import {View} from 'react-native';
 
-const MyUser = () => {
+const MyUser = ({navigation}) => {
   const [user, setUser] = useState({});
   const [links, setLinks] = useState({});
 
@@ -22,6 +22,7 @@ const MyUser = () => {
       })
         .then((res) => res.json())
         .then((result) => {
+          console.log(result);
           setUser(result);
         })
         .catch((err) => console.log(err));
@@ -39,6 +40,8 @@ const MyUser = () => {
         .catch((err) => console.log(err));
     });
   }, []);
+
+  navigation.setOptions({title: user.name});
 
   return (
     <View style={Styles.main}>

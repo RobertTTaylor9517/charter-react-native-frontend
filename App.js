@@ -28,7 +28,9 @@ const linking = {
   prefixes: ['https://charta.com', 'charta://'],
   config: {
     screens: {
-      User: 'User',
+      User: {
+        path: 'User/:id',
+      },
     },
   },
 };
@@ -49,9 +51,7 @@ class App extends React.Component {
             name="User"
             component={User}
             options={{
-              headerTitleStyle: {
-                textAlign: 'center',
-              },
+              headerShown: false,
             }}
           />
           <Stack.Screen

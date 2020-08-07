@@ -4,6 +4,7 @@ import {useForm, Controller} from 'react-hook-form';
 
 import {baseURL, createPage} from '../fetch/Fetcher';
 import Icon from 'react-native-vector-icons/AntDesign';
+import {CommonActions} from '@react-navigation/native';
 
 const NewPage = ({navigation}) => {
   const {control, handleSubmit, errors} = useForm();
@@ -29,7 +30,13 @@ const NewPage = ({navigation}) => {
         .then((res) => res.json())
         .then(async (result) => {
           await global.MMKV.setStringAsync('page_id', result);
-          navigation.navigate('UserNav');
+          // navigation.navigate('UserNav');
+          navigation.dispatch(
+            CommonActions.reset({
+              index: 1,
+              routes: [{name: 'UserNav'}],
+            }),
+          );
         })
         .catch((err) => console.log(err));
     });
